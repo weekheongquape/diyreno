@@ -22,6 +22,13 @@ function getParameterByName(name) {
 $('#infodiv').trigger('create');});
 	    
 	  }	
+	function viewproducts(coid)
+	{
+		alert(coid);
+		$("#infodiv").load("http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid,function(){
+			$('#infodiv').trigger('create');
+		});	
+	}	
 	  
  $(document).ready(function(){
      $("#infodiv").load( "http://www.diyreno.sg/getco.php?catid="+getParameterByName('catid'),function(){
