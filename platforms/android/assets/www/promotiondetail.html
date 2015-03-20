@@ -16,6 +16,13 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 	
+	function call(number)
+	{
+		//document.location.href = 'http://google.com';
+		window.open(number,'_system');
+		alert(number);
+	}
+	
   function showdetails(coid)
   {
 	   $("#infodiv").load( "http://www.diyreno.sg/promo/index.php/reno/promotiondetails/"+coid,function(){
