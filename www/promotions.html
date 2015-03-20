@@ -12,21 +12,21 @@
 <script>
 $(document).ready(function() {
     //document.addEventListener("deviceready", onDeviceReady, true);
-	/* **/
+	/* 
     $.ajax({
 		url:'http://www.diyreno.sg/promo/index.php/reno/loaddeals',
 		success: function(request)
 		{
 			$('#populate').html(request);
 		}
-	});
+	});**/
+		$.post('http://www.diyreno.sg/promo/index.php/reno/loaddeals',{},function(request){$('#populate').html(request);});
+	//alert('test');      
+});
 	$(document).ajaxStop(function() {
 			$.mobile.loading('hide');
 			$.mobile.hidePageLoadingMsg();
 		});
-		//$.post('http://www.diyreno.sg/promo/index.php/reno/loaddeals',{},function(request){$('#populate').html(request);});
-	//alert('test');      
-});
 </script>
 </head>
 <body>
