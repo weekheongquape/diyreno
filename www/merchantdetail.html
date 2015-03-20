@@ -24,7 +24,6 @@ $('#infodiv').trigger('create');});
 	  }	
 	function viewproducts(coid)
 	{
-		alert(coid);
 		$("#infodiv").load("http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid,function(){
 			$('#infodiv').trigger('create');
 		});	
