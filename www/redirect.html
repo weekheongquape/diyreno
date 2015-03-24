@@ -8,48 +8,46 @@
 
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="jquery.mobile-1.4.4.js"></script>
-<script>
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
-	
-	function call(number)
-	{
-		//document.location.href = 'http://google.com';
-		window.open(number,'_system');
-	}
-	
-	function shortlist(val)
-	{/***********/
-		var value = window.localStorage.getItem("userid");
-		if(value>0)
-		{
-			$.post('http://www.diyreno.sg/promo/index.php/reno/shortlistmember',{product_id:val,member_id:value});
-			alert('Item shortlisted');
-			return false;
-		}
-		else
-		{
-			alert('Please sign in first');
-			return false;			
-		}	  
-	}
+<script type="text/javascript" charset="utf-8">
 	  
-$(document).ready(function(){
-	$("#infodiv").load( "http://www.diyreno.sg/promo/index.php/reno/promotionsmobile/"+getParameterByName('catid'),function(){
+$(document).ready(function() {
+    // are we running in native app or in a browser?
+    window.isphone = false;
+    if(document.URL.indexOf("http://") === -1 
+        && document.URL.indexOf("https://") === -1) {
+        window.isphone = true;
+    }
+
+    if( window.isphone ) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    } else {
+        onDeviceReady();
+    }
+	$(document).ajaxStop(function() {
+		$.mobile.loading('hide');
+		$.mobile.hidePageLoadingMsg();
+	});
+	
+	
+	
+	
+});
+
+function onDeviceReady() {
+    // do everything here.
+	$("#infodiv").load( getParameterByName('url'),function(){
 	
 		$('#infodiv').trigger('create');
 	
 		jQuery("html, body").animate({ scrollTop: 0 }, 0);
 		
+		
+		
 		setatag();
 	
 	});
-});	  
-	
+}
+
 function redirect(href)
 {
 	$('#infodiv').load(href,function(){
@@ -96,7 +94,34 @@ $(function(){
 		},100)
 	}
 })
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
+function call(number)
+{
+	//document.location.href = 'http://google.com';
+	window.open(number,'_system');
+}
+
+function shortlist(val)
+  {/***********/
+		var value = window.localStorage.getItem("userid");
+		if(value>0)
+		{
+			$.post('http://www.diyreno.sg/promo/index.php/reno/shortlistmember',{product_id:val,member_id:value});
+			alert('Item shortlisted');
+			return false;
+		}
+		else
+		{
+			alert('Please sign in first');
+			return false;			
+		}	  
+  }
 </script>
 <style>
 .my_icon_wrapper {
@@ -110,7 +135,7 @@ $(function(){
 <body>
 <div data-role="page">
 
-	<div data-role="header" data-position="fixed"><a href="promotions.html" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
+	<div data-role="header" data-position="fixed"><a href="javascript:window.history.back()" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
 		<h1>DIY RENO</h1> 
 	</div><!-- /header -->
 <div data-role="content">
@@ -124,7 +149,6 @@ $(function(){
 	</div><!-- /footer -->
 
 </div><!-- /page -->
-
 <script type="text/javascript" src="cordova.js"></script>
 </body>
 </html>
