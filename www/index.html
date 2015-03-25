@@ -42,7 +42,15 @@ $(document).ready(function() {
 			$('#shortlisttab').show();
 			$('#shortlisttab').attr('href','redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/mobileshortlistedproducts/'+value);
 		}
-		
+		setInterval(function(){
+			if($('#subtabs > li.active').next('li').length){
+				$('#subtabs > li.active').next('li').trigger('click');
+			}
+			else
+			{
+				$('#subtabs > li:first-child').trigger('click');
+			}
+		}, 10000);
 });
 	$(document).ajaxStop(function() {
 			$.mobile.loading('hide');
