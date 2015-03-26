@@ -10,6 +10,13 @@
 <script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
 <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>
 
+
+<script>
+	$(document).ajaxStop(function() {
+		$.mobile.loading('hide');
+		//$.mobile.hidePageLoadingMsg();
+	});
+</script>
 </head>
 <body>
 <div data-role="page">

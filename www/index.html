@@ -26,8 +26,8 @@ $(document).ready(function() {
 		$('#subtabs > li').click(function(e) {
 			$(this).addClass('active').siblings('li').removeClass('active');
 			var id = $(this).attr('id');
-			$('.tab1,.tab2,.tab3').hide();
-			$('.'+id).show();
+			$('.tab1,.tab2,.tab3').fadeOut();
+			$('.'+id).fadeIn();
 		});
 		$.post('http://www.diyreno.sg/promo/index.php/reno/getfeaturedproducts',{},function(request){$('#products').html(request);});
 		$.post('http://www.diyreno.sg/promo/index.php/reno/getadvertwithus',{},function(request){$('#advertwithus').html(request);});
@@ -92,20 +92,15 @@ $(document).ready(function() {
 	<div role="main" class="ui-content">
     <div align="center"><p><img src="images/logo.png" width="60%">
     <br>
-    <div style="width:90%;text-align:justify;">DIYRENO.sg is the first and only platform that connect residential and commercial property owners directly with contractors or suppliers of specialized trade bypassing the middleman to fit out their property, thus, resulting in lower cost for owners and higher profit for contractors and suppliers.</div>
       	<a id="logintab" href="login.html" class="ui-btn" data-ajax="false">Login</a>
       	<a id="shortlisttab" href="redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/mobileshortlistedproducts/" class="ui-btn" data-ajax="false" style="display:none;">Shortlisted Products</a>
-        <a href="aboutdiy.html" class="ui-btn" data-ajax="false">About Us</a>
 		<a href="promotions.html" class="ui-btn" data-ajax="false"> Great Deals</a>
         <a href="merchants.html" class="ui-btn" data-ajax="false">Merchant</a>
         <a href="project_coordinator.html" class="ui-btn" data-ajax="false">Project Coordinator</a>
-        <div id="populate">
-        	<!--Other menu-->	
-        </div>
         
         <div id="submenu">
         	<ul id="subtabs">
-            	<li id="tab1" class="active">Advert with Us</li>
+            	<li id="tab1" class="active">Advertise with Us</li>
             	<li id="tab2">Featured <br/>Products</li>
             	<li id="tab3">Featured Project<br/>Coordinators</li>
             </ul>
@@ -122,6 +117,11 @@ $(document).ready(function() {
             
             </div>
         </div>
+        <a href="aboutdiy.html" class="ui-btn" data-ajax="false">About Us</a>
+        <div id="populate">
+        	<!--Other menu-->	
+        </div>
+    <div style="width:90%;text-align:justify;">DIYRENO.sg is the first and only platform that connect residential and commercial property owners directly with contractors or suppliers of specialized trade bypassing the middleman to fit out their property, thus, resulting in lower cost for owners and higher profit for contractors and suppliers.</div>
         <script>
         	
         </script>

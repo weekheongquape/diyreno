@@ -18,14 +18,16 @@ function getParameterByName(name)
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-$(document).ready(function() {
-		$.post('http://www.diyreno.sg/promo/index.php/reno/gallery',{id:getParameterByName('id')},function(request){$('#populate').html(request);});
-	    
-});
+	$(document).ready(function() {
+		$.post('http://www.diyreno.sg/promo/index.php/reno/gallery',{id:getParameterByName('id')},function(request){$('#populate').html(request);
+			
+		});	
+	});
+	
 	$(document).ajaxStop(function() {
-			$.mobile.loading('hide');
-			$.mobile.hidePageLoadingMsg();
-		});
+		$.mobile.loading('hide');
+		//$.mobile.hidePageLoadingMsg();
+	});
 </script>
 </head>
 <body>
