@@ -21,13 +21,16 @@ function getParameterByName(name)
 	$(document).ready(function() {
 		$.post('http://www.diyreno.sg/promo/index.php/reno/gallery',{id:getParameterByName('id')},function(request){$('#populate').html(request);
 			
+			$( ".selector" ).loader({
+			  disabled: true
+			});
 		});	
 	});
 	
-	$(document).ajaxStop(function() {
+	$( window ).load( function() {	
 		$.mobile.loading('hide');
-		//$.mobile.hidePageLoadingMsg();
 	});
+	
 </script>
 </head>
 <body>
@@ -50,5 +53,9 @@ function getParameterByName(name)
 </div><!-- /page -->
 
 <script type="text/javascript" src="cordova.js"></script>
+<script>
+	$.mobile.loading('hide');
+	$.mobile.hidePageLoadingMsg();
+</script>
 </body>
 </html>

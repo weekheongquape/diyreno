@@ -12,10 +12,11 @@
 
 
 <script>
-	$(document).ajaxStop(function() {
+	$(document).ready(function(e) {
 		$.mobile.loading('hide');
 		$.mobile.hidePageLoadingMsg();
-	});
+        
+    });
 </script>
 </head>
 <body>
