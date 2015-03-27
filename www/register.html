@@ -92,16 +92,71 @@ function call(number)
 	//document.location.href = 'http://google.com';
 	window.open(number,'_system');
 }
-function login()
+function register()
 {
-	$.post('http://diyreno.sg/promo/index.php/reno/loginmobile',{username:$('#username').val(),password:$('#password').val()},function(request)
+	$('.name, .username, .password, .repassword, .email, .reemail').css('color','#000');
+	if($('#name').val().trim() == '')
+	{
+		$('#name').val('').focus();
+		$('.name').css('color', '#F00');
+		return false;
+	}
+	if($('#username').val().trim() == '')
+	{
+		$('#username').val('').focus();
+		$('.username').css('color', '#F00');
+		return false;
+	}
+	if($('#password').val().trim() == '')
+	{
+		$('#password').val('').focus();
+		$('.password').css('color', '#F00');
+		return false;
+	}
+	if($('#repassword').val().trim() == '')
+	{
+		$('#repassword').val('').focus();
+		$('.repassword').css('color', '#F00');
+		return false;
+	}
+	if($('#password').val() != $('#repassword').val())
+	{
+		alert('Passwords do not match');
+		$('#password').val('').focus();
+		$('#repassword').val('');
+		$('.password').css('color', '#F00');
+		$('.repassword').css('color', '#F00');
+		return false;
+	}
+	
+	
+	
+	if($('#email').val().trim() == '')
+	{
+		$('#email').val('').focus();
+		$('.email').css('color', '#F00');
+		return false;
+	}
+	if($('#reemail').val().trim() == '')
+	{
+		$('#reemail').val('').focus();
+		$('.reemail').css('color', '#F00');
+		return false;
+	}
+	if($('#email').val() != $('#reemail').val())
+	{
+		alert('Emails do not match');
+		$('#reemail').val('');
+		$('#email').val('').focus();
+		$('.email').css('color', '#F00');
+		$('.reemail').css('color', '#F00');
+		return false;
+	}
+	
+	$.post('http://diyreno.sg/promo/index.php/reno/registermobile',{name:$('#name').val(),username:$('#username').val(),password:$('#password').val(),email:$('#email').val()},function(request)
 	{
 		$('#loadscript').html(request);
 	});
-}
-function register()
-{
-	window.location.href = "register.html";
 }
 </script>
 <style>
@@ -124,13 +179,20 @@ function register()
 
 <div id="infodiv"> </div>
 <div id="loadscript"> </div>
-
-	USER NAME
+	<h2 style="  border-bottom: 1px solid #EF474D;  color: #323232;  width: 100%;  font-size: 16px;">User Registration</h2>
+	<span class="name" style="font-size:14px;letter-spacing:1px;">NAME *</span>
+    <input type="text" id="name"/>
+	<span class="username" style="font-size:14px;letter-spacing:1px;">USERNAME *</span>
     <input type="text" id="username"/>
-    PASSWORD
+    <span class="password" style="font-size:14px;letter-spacing:1px;">PASSWORD *</span>
     <input type="password" id="password"/>
-    <button onClick="login()">Log In</button>
-    <button onClick="register()">Sign up as member</button>
+    <span class="repassword" style="font-size:14px;letter-spacing:1px;">CONFIRM PASSWORD *</span>
+    <input type="password" id="repassword"/>
+    <span class="email" style="font-size:14px;letter-spacing:1px;">EMAIL ADDRESS *</span>
+    <input type="email" id="email"/>
+    <span class="reemail" style="font-size:14px;letter-spacing:1px;">CONFIRM EMAIL ADDRESS *</span>
+    <input type="email" id="reemail"/>
+    <button onClick="register()">Register</button>
 </div>
 	<div data-role="footer" data-position="fixed">
 		<h4>Copyright 2014 DIY RENO</h4>
