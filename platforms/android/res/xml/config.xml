@@ -69,4 +69,7 @@
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
 </widget>
