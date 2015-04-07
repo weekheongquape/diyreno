@@ -38,11 +38,19 @@ function getParameterByName(name) {
 			return false;			
 		}	  
 	}
+	
+	function load1(val1)
+	{
+		$('#infodiv').load(val1,function(){
+			
+			setatag();
+		});
+		return false;
+	}
 	  
 $(document).ready(function(){
 	$("#infodiv").load( "http://www.diyreno.sg/promo/index.php/reno/promotionsmobile/"+getParameterByName('catid'),function(){
 	
-		$('#infodiv').trigger('create');
 	
 		jQuery("html, body").animate({ scrollTop: 0 }, 0);
 		
@@ -53,19 +61,21 @@ $(document).ready(function(){
 	
 function redirect(href)
 {
-	$('#infodiv').load(href,function(){
+	window.location.href="redirect.html?url="+href;
+	/*$('#infodiv').load(href,function(){
 		jQuery("html, body").animate({ scrollTop: 0 }, 0);
 		setatag();
-	}); 
+	}); */
 }
 	
 function setatag()
 {
 	$('#infodiv a').click(function(e) {
 		jQuery("html, body").animate({ scrollTop: 0 }, 0);
-		$('#infodiv').load($(this).attr('href'),function(){
+		/*$('#infodiv').load($(this).attr('href'),function(){
 			setatag();
-		});
+		});*/
+		window.location.href="redirect.html?url="+$(this).attr('href');
 		e.preventDefault();
 	});
 }
@@ -111,7 +121,7 @@ $(function(){
 <body>
 <div data-role="page">
 
-	<div data-role="header" data-position="fixed"><a href="promotions.html" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
+	<div data-role="header" data-position="fixed"><a href="#" onClick="window.history.back();" data-icon="home" class="ui-btn-right" data-ajax="false">Back</a>
 		<h1>DIY RENO</h1> 
 	</div><!-- /header -->
 <div data-role="content">

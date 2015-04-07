@@ -97,11 +97,26 @@ function login()
 	$.post('http://diyreno.sg/promo/index.php/reno/loginmobile',{username:$('#username').val(),password:$('#password').val()},function(request)
 	{
 		$('#loadscript').html(request);
+		if(getParameterByName('product') != '')
+		{			
+			window.location.replace("redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/promotionmobiledetails/" + getParameterByName('product')+"/shortlist");
+		}
+		else
+		{
+			window.history.back();
+		}
 	});
 }
 function register()
-{
-	window.location.href = "register.html";
+{	
+	if(getParameterByName('product') != '')
+	{
+		window.location.replace("register.html?product="+getParameterByName('product'));		
+	}
+	else
+	{
+		window.location.replace("register.html");
+	}
 }
 </script>
 <style>

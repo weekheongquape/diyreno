@@ -14,17 +14,19 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 	
-  function showdetails(coid)
-  {
-	   $("#infodiv").load( "http://www.diyreno.sg/getdetail.php?sid="+coid,function(){
-$('#infodiv').trigger('create');});
+	function showdetails(coid)
+	{
+	   /*$("#infodiv").load( "http://www.diyreno.sg/getdetail.php?sid="+coid,function(){
+			$('#infodiv').trigger('create');});*/
 	    
-	  }	
+		window.location.href="redirect.html?url=http://www.diyreno.sg/getdetail.php?sid="+coid;
+	}	
 	function viewproducts(coid)
 	{
-		$("#infodiv").load("http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid,function(){
+		/*$("#infodiv").load("http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid,function(){
 			$('#infodiv').trigger('create');
-		});
+		});*/
+		window.location.href="redirect.html?url=http://www.diyreno.sg/promo/index.php/reno/viewmorelistingmobile2?id="+coid;
 	}	
 	  
  $(document).ready(function(){

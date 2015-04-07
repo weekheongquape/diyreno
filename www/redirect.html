@@ -33,6 +33,15 @@ $(document).ready(function() {
 	
 });
 
+	function load1(val1)
+	{
+		$('#infodiv').load(val1,function(){
+			$('#infodiv').trigger('create');
+			setatag();
+		});
+		return false;
+	}
+	
 function onDeviceReady() {
     // do everything here.
 	$("#infodiv").load( getParameterByName('url'),function(){
@@ -50,19 +59,21 @@ function onDeviceReady() {
 
 function redirect(href)
 {
-	$('#infodiv').load(href,function(){
+	window.location.href="redirect.html?url="+href;
+	/*$('#infodiv').load(href,function(){
 		jQuery("html, body").animate({ scrollTop: 0 }, 0);
 		setatag();
-	}); 
+	}); */
 }
 	
 function setatag()
 {
 	$('#infodiv a').click(function(e) {
 		jQuery("html, body").animate({ scrollTop: 0 }, 0);
-		$('#infodiv').load($(this).attr('href'),function(){
+		/*$('#infodiv').load($(this).attr('href'),function(){
 			setatag();
-		});
+		});*/
+		window.location.href="redirect.html?url="+$(this).attr('href');
 		e.preventDefault();
 	});
 }
@@ -119,17 +130,13 @@ function shortlist(val)
 		else
 		{
 			alert('Please sign in first');
+			window.location.href="login.html?product="+val;
 			return false;			
 		}	  
   }
 </script>
 <style>
-.my_icon_wrapper {
-        float: left; 
-        width: 80px; height: 80px;
-        text-align: center; 
-        vertical-align: middle; 
-}
+.my_icon_wrapper {float: left;width: 80px; height: 80px;text-align: center;vertical-align: middle;}
 </style>
 </head>
 <body>
