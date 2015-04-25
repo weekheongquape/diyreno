@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.diyreno.start" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Diyreno</name>
+    <name>DIY RENO</name>
     <description>
-        DIYreno app for a fit guy
+       
+DIYreno.sg is the first and only platform that connect residential and commercial property owners directly with contractors or suppliers of specialized trade bypassing the middleman to fit out their property, thus, resulting in lower cost for owners and increased lead generation for contractors and suppliers.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="sales@quape.com" href="http://www.quape.com.sg">
+        QUAPE PTE LTD
     </author>
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.5.0" />
